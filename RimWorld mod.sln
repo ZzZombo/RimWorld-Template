@@ -4,10 +4,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code", "Source\Code.csproj", "{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B} = {70EC57B9-D44F-42B1-9AB6-7AF296AB435B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Source\Content.csproj", "{400311B4-6255-49ED-96BF-E684A99B1991}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\ZzZomboRW\Source\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,6 +45,14 @@ Global
 		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|x86.ActiveCfg = Release|Any CPU
 		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|x86.Build.0 = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Debug|x86.ActiveCfg = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Debug|x86.Build.0 = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|x86.ActiveCfg = Release|Any CPU
+		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
