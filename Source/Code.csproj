@@ -37,6 +37,7 @@
 	<ItemGroup>
 		<Reference Include="ZzZomboRW">
 			<HintPath>..\..\ZzZomboRW\v1.x\Assemblies\ZzZomboRW.dll</HintPath>
+			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
 	<Target Name="SetReferences" BeforeTargets="UpdateReferences">
