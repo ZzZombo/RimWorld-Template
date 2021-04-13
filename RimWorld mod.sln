@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content", "Source\Content.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\ZzZomboRW\Source\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\ZzZomboRW\Source\Code.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
