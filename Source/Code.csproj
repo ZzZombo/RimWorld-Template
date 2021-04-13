@@ -34,6 +34,11 @@
 		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.0" />
 		<PackageReference Include="TaskPubliciser" Version="1.0.3" />
 	</ItemGroup>
+	<ItemGroup>
+		<Reference Include="ZzZomboRW">
+			<HintPath>..\..\ZzZomboRW\v1.x\Assemblies\ZzZomboRW.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 	<Target Name="SetReferences" BeforeTargets="UpdateReferences">
 		<PropertyGroup>
 			<AssemblyCSharp>$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll</AssemblyCSharp>
