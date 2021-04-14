@@ -3,7 +3,7 @@ using Verse;
 
 namespace ZzZomboRW
 {
-	[StaticConstructorOnStartup]
+	/* [StaticConstructorOnStartup]
 	internal static class HarmonyHelper
 	{
 		static HarmonyHelper()
@@ -19,5 +19,5 @@ namespace ZzZomboRW
 			{
 			}
 		}
-	}
+	} */
 }

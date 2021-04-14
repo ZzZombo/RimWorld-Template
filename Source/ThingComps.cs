@@ -2,7 +2,7 @@ using Verse;
 
 namespace ZzZomboRW
 {
-	public class CompProperties_X: CompProperties
+	/* public class CompProperties_X: CompProperties
 	{
 		public bool enabled = true;
 		public int data = -1;
@@ -14,8 +14,8 @@ namespace ZzZomboRW
 				$"\tEnabled: {this.enabled}.");
 		}
 
-	}
-	public class CompX: ThingComp
+	} */
+	/* public class CompX: ThingComp
 	{
 		public CompProperties_X Props => (CompProperties_X)this.props;
 		public bool Enabled => this.Props.enabled;
@@ -32,5 +32,5 @@ namespace ZzZomboRW
 			Scribe_Values.Look(ref this.Props.data, "data", 1, false);
 			Scribe_Values.Look(ref this.Props.enabled, "enabled", true, false);
 		}
-	}
+	} */
 }
