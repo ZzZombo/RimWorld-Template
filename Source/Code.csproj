@@ -30,8 +30,6 @@
 		<PackageReference Include="Lib.Harmony" Version="2.0.4" ExcludeAssets="runtime" />
 		<!-- <PackageReference Include="UnlimitedHugs.Rimworld.HugsLib" Version="8.0.0" ExcludeAssets="runtime" /> -->
 		<!-- <PackageReference Include="RimWorld.PatchOperationLoadOnDemand" Version="1.1.0" ExcludeAssets="runtime" /> -->
-		<PackageReference Include="Microsoft.NETCore.Platforms" Version="5.0.2" />
-		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net472" Version="1.0.0" />
 		<PackageReference Include="TaskPubliciser" Version="1.0.3" />
 	</ItemGroup>
 	<ItemGroup>
@@ -45,8 +43,8 @@
 			<AssemblyCSharp>$(PkgKrafs_Rimworld_Ref)\ref\net472\Assembly-CSharp.dll</AssemblyCSharp>
 			<Unity_CoreModule>$(PkgKrafs_Rimworld_Ref)\ref\net472\UnityEngine.CoreModule.dll</Unity_CoreModule>
 			<PubliciseOutputPath>$(PkgKrafs_Rimworld_Ref)\ref\net472\</PubliciseOutputPath>
-			<AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_public.dll</AssemblyCSharp_Publicised>
-			<Unity_CoreModule_Publicised>$(PubliciseOutputPath)UnityEngine.CoreModule_public.dll</Unity_CoreModule_Publicised>
+			<AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_publicised.dll</AssemblyCSharp_Publicised>
+			<Unity_CoreModule_Publicised>$(PubliciseOutputPath)UnityEngine.CoreModule_publicised.dll</Unity_CoreModule_Publicised>
 		</PropertyGroup>
 		<Message Importance="High" Text="Publicising assemblies…" />
 		<Publicise TargetAssemblyPath="$(AssemblyCSharp)" OutputPath="$(PubliciseOutputPath)" Condition="Exists('$(AssemblyCSharp)')" />
