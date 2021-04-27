@@ -3,21 +3,13 @@ using Verse;
 
 namespace ZzZomboRW
 {
-	/* [StaticConstructorOnStartup]
+	[StaticConstructorOnStartup]
 	internal static class HarmonyHelper
 	{
 		static HarmonyHelper()
 		{
-			var harmony = new Harmony($"ZzZomboRW.{MOD.NAME}");
+			var harmony = new Harmony(Mod.ModID);
 			harmony.PatchAll();
 		}
-
-		[HarmonyPatch(typeof(object), nameof(object.Equals))]
-		public static class Class_MethodPatch
-		{
-			private static void Postfix(ref object __result, object __instance)
-			{
-			}
-		}
-	} */
+	}
 }

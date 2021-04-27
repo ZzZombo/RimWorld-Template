@@ -13,20 +13,28 @@
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
-		<PackageProjectUrl>https://github.com/ZzZombo/RimWorld-Template</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/ZzZombo/RimWorld-Template.git</RepositoryUrl>
+		<PackageProjectUrl>
+			<!-- *FIXME* -->https://github.com/ZzZombo/RimWorld-Template
+		</PackageProjectUrl>
+		<RepositoryUrl>
+			<!-- *FIXME* -->https://github.com/ZzZombo/RimWorld-Template.git
+		</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
 		<Authors>ZzZombo</Authors>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageId>Template</PackageId>
+		<PackageId>*FIXME*</PackageId>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<OutputType>Library</OutputType>
 	</PropertyGroup>
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<DefineConstants>DEBUG</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<None Include="..\LICENSE">
@@ -42,7 +50,7 @@
 		<PackageReference Include="TaskPubliciser" Version="1.0.3" />
 	</ItemGroup>
 	<ItemGroup>
-		<Reference Include="ZzZomboRW">
+		<Reference Include="Framework">
 			<HintPath>..\..\ZzZomboRW\v1.x\Assemblies\Framework.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
@@ -55,11 +63,11 @@
 			<AssemblyCSharp_Publicised>$(PubliciseOutputPath)Assembly-CSharp_publicised.dll</AssemblyCSharp_Publicised>
 			<Unity_CoreModule_Publicised>$(PubliciseOutputPath)UnityEngine.CoreModule_publicised.dll</Unity_CoreModule_Publicised>
 		</PropertyGroup>
-		<Message Importance="High" Text="Publicising assemblies…" />
+		<Message Importance="High" Text="Publicizing assemblies…" />
 		<Publicise TargetAssemblyPath="$(AssemblyCSharp)" OutputPath="$(PubliciseOutputPath)" Condition="Exists('$(AssemblyCSharp)')" />
 		<Publicise TargetAssemblyPath="$(Unity_CoreModule)" OutputPath="$(PubliciseOutputPath)" Condition="Exists('$(Unity_CoreModule)')" />
-		<!-- Add references to the new publicised assemblies. -->
-		<Message Importance="High" Text="Replacing references to non-publicised assemblies with publicised…" />
+		<!-- Add references to the new publicized assemblies. -->
+		<Message Importance="High" Text="Replacing references to non-publicized assemblies with publicized…" />
 		<ItemGroup>
 			<Reference Include="$(AssemblyCSharp_Publicised)">
 				<SpecificVersion>false</SpecificVersion>

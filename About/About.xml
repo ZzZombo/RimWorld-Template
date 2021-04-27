@@ -28,9 +28,9 @@
 		<li>Ludeon.RimWorld</li>
 		<li>ZzZombo.Framework</li>
 	</loadAfter>
-	<name>[UNNAMED MOD]</name>
+	<name>*FIXME*</name>
 	<author>ZzZombo</author>
-	<packageId>ZzZombo.Invalid</packageId>
-	<description>Mod template.</description>
+	<packageId>ZzZombo.*FIXME*</packageId>
+	<description>*FIXME*</description>
 	<url></url>
 </ModMetaData>
