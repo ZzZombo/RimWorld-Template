@@ -1,16 +1,22 @@
 using UnityEngine;
 using Verse;
 using RimWorld;
+using System;
 
 internal static class MOD
 {
-	public const string ID = "ID";
-	public const string NAME = "MOD";
+	public const string ID = "*FIXME*";
+	public const string NAME = "*FIXME*";
 	public const bool SHOW_SETTINGS = false;
 }
 
+
 namespace ZzZomboRW
 {
+	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
+	public class HotSwappableAttribute: Attribute
+	{
+	}
 	internal class Mod: Verse.Mod
 	{
 		private ModSettings settings;

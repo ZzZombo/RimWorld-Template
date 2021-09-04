@@ -8,12 +8,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code", "Source\Code.csproj"
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B} = {70EC57B9-D44F-42B1-9AB6-7AF296AB435B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\ZzZomboRW\Source\Code.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "Content.shproj", "{2B8050E3-2030-4648-91DA-6101FEB69C3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.3", "I:\dev\RimWorld\RW\source-v1.3\Decompiled RW v1.3.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Content.projitems*{2b8050e3-2030-4648-91da-6101feb69c3b}*SharedItemsImports = 13
