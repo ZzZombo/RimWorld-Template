@@ -18,12 +18,45 @@
 		<PublicizeAsReferenceAssemblies>$(Platform == 'Release')</PublicizeAsReferenceAssemblies>
 		<RimWorldVersion>$(Platform.Substring(1))</RimWorldVersion>
 		<DefineConstants>RW_VER_$(RimWorldVersion.Replace('.', '_'))</DefineConstants>
+		<Platforms>v1.x;v1.0;v1.1;v1.2;v1.3</Platforms>
 	</PropertyGroup>
+	<Choose>
+		<When Condition="'$(Configuration)' == 'Debug'">
+			<PropertyGroup>
+				<DefineConstants>$(DefineConstants);TRACE;DEBUG</DefineConstants>
+				<DebugSymbols>true</DebugSymbols>
+				<DebugType>pdbonly</DebugType>
+				<Optimize>false</Optimize>
+			</PropertyGroup>
+		</When>
+		<Otherwise>
+			<PropertyGroup>
+				<DefineConstants>$(DefineConstants);TRACE</DefineConstants>
+				<DebugSymbols>false</DebugSymbols>
+				<ErrorReport>prompt</ErrorReport>
+				<Optimize>true</Optimize>
+				<WarningLevel>4</WarningLevel>
+			</PropertyGroup>
+		</Otherwise>
+	</Choose>
+	<Choose>
+		<When Condition="'$(Platform)' == 'v1.0'">
+			<PropertyGroup>
+				<!-- v1.0 reads everything from the root folder of the mod, adjust for that. -->
+				<OutputPath>..\Assemblies\</OutputPath>
+			</PropertyGroup>
+		</When>
+		<When Condition="'$(Platform)' == 'v1.x'">
+			<PropertyGroup>
+				<!-- Refer to the latest supported game version instead. -->
+				<RimWorldVersion>$(Platforms.Substring($([MSBuild]::Add($(Platforms.LastIndexOf(';')), 2))))</RimWorldVersion>
+			</PropertyGroup>
+		</When>
+	</Choose>
 	<PropertyGroup Label="Package details">
 		<Authors>ZzZombo</Authors>
 		<PackageLicenseFile>..\LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<Platforms>v1.x;v1.0;v1.1;v1.2;v1.3</Platforms>
 		<RootNamespace>ZzZomboRW</RootNamespace>
 		<PackageId>*FIXME*</PackageId>
 		<AssemblyName>*FIXME*</AssemblyName>
@@ -32,19 +65,7 @@
 		<!-- *FIXME* -->
 		<RepositoryUrl>https://github.com/ZzZombo/RimWorld-Template.git</RepositoryUrl>
 		<RepositoryType>Git</RepositoryType>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<Optimize>true</Optimize>
-		<ErrorReport>prompt</ErrorReport>
-		<WarningLevel>4</WarningLevel>
-		<DebugSymbols>false</DebugSymbols>
-		<DefineConstants>DEBUG;$(DefineConstants)</DefineConstants>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-		<Optimize>false</Optimize>
-		<DebugType>pdbonly</DebugType>
-		<DebugSymbols>true</DebugSymbols>
-		<DefineConstants>TRACE;$(DefineConstants)</DefineConstants>
+		<DefineConstants>$(DefineConstants);MOD_SHOW_SETTINGS</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<Content Include=" ..\LICENSE">
@@ -60,7 +81,7 @@
 		<PackageReference Include="Lib.Harmony" Version="2.1.1" ExcludeAssets="runtime" />
 		<Publicize Include="Assembly-CSharp.dll;UnityEngine.CoreModule.dll" />
 		<Reference Include="Framework">
-			<HintPath>..\..\ZzZomboRW\$(Platform)\Assemblies\Framework.dll</HintPath>
+			<HintPath>..\..\ZzZomboRW\$(OutputPath.Substring(2))\Framework.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
