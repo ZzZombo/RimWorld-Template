@@ -4,6 +4,7 @@ using Verse;
 
 namespace ZzZomboRW
 {
+	[HotSwappable]
 	internal class ModSettings: Verse.ModSettings
 	{
 		//public object value;

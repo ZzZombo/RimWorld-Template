@@ -10,13 +10,14 @@ internal static class MOD
 	public const bool SHOW_SETTINGS = false;
 }
 
-
 namespace ZzZomboRW
 {
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
 	public class HotSwappableAttribute: Attribute
 	{
 	}
+
+	[HotSwappable]
 	internal class Mod: Verse.Mod
 	{
 		private ModSettings settings;
