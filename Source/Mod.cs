@@ -12,11 +12,6 @@ internal static class MOD
 
 namespace ZzZomboRW
 {
-	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
-	public class HotSwappableAttribute: Attribute
-	{
-	}
-
 	[HotSwappable]
 	internal class Mod: Verse.Mod
 	{
