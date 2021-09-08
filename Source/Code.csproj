@@ -10,7 +10,6 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
 		<Deterministic>true</Deterministic>
 		<OutputType>Library</OutputType>
@@ -67,7 +66,8 @@
 		<RepositoryType>Git</RepositoryType>
 		<DefineConstants>$(DefineConstants);MOD_SHOW_SETTINGS</DefineConstants>
 	</PropertyGroup>
-	<ItemGroup>
+	<ItemGroup Label="Assets &amp; References">
+		<None Remove="**\*.bak" />
 		<Content Include=" ..\LICENSE">
 			<IsAssembly>false</IsAssembly>
 			<CopyToOutputDirectory>false</CopyToOutputDirectory>
@@ -77,9 +77,9 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Krafs.Rimworld.Ref" Version="$(RimWorldVersion).*" GeneratePathProperty="true" />
+		<PackageReference Include="Krafs.Rimworld.Ref" Version="$(RimWorldVersion).*" />
 		<PackageReference Include="Lib.Harmony" Version="2.1.1" ExcludeAssets="runtime" />
-		<Publicize Include="Assembly-CSharp.dll;UnityEngine.CoreModule.dll" />
+		<Publicize Include="Assembly-CSharp;UnityEngine.CoreModule" />
 		<Reference Include="Framework">
 			<HintPath>..\..\ZzZomboRW\$(OutputPath.Substring(2))\Framework.dll</HintPath>
 			<Private>false</Private>

@@ -11,12 +11,16 @@ namespace ZzZomboRW
 	[HotSwappable]
 	internal class Mod: Verse.Mod
 	{
-		public static string ModID => $"{typeof(Mod).Namespace}.{MOD.ID}";
+		public static readonly string NAMESPACE = typeof(Mod).Namespace;
+		public static readonly string ModID = $"{NAMESPACE}.{MOD.ID}";
+		public static readonly string ModIDNoDots = ModID.Replace('.', '_');
+		public static Mod Instance;
 #if MOD_SHOW_SETTINGS
 		private readonly ModSettings settings;
 #endif
 		public Mod(ModContentPack content) : base(content)
 		{
+			Instance ??= this;
 #if MOD_SHOW_SETTINGS
 			this.settings = this.GetSettings<ModSettings>();
 #endif

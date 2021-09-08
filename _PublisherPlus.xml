@@ -6,7 +6,5 @@
 		<exclude>.vs</exclude>
 		<exclude>RimWorld mod.sln</exclude>
 		<exclude>Source</exclude>
-		<exclude>Content.projitems</exclude>
-		<exclude>Content.shproj</exclude>
 	</Excluded>
 </Configuration>
