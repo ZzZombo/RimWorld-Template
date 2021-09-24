@@ -213,4 +213,6 @@ _Pvt_Extensions
 __pycache__/
 *.pyc
 
-!*/Assemblies/*.dll
+!**/Assemblies/*.dll
+Source/**/build/
+v?.?-?*/

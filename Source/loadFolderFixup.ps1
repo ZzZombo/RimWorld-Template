@@ -21,7 +21,3 @@ foreach($ver in $xml.loadFolders.ChildNodes) {
 }
 
 Save-XML -xml $xml -path $out | Out-Null
-
-$ts = Get-Date
-$in, $out | Get-Item | ForEach-Object { $_.lastaccesstime = $_.lastwritetime = $ts }
-'Fixup done.'

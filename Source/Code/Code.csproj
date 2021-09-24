@@ -66,13 +66,12 @@
 		<AutoIncrementPackageRevision>true</AutoIncrementPackageRevision>
 		<ComVisible>false</ComVisible>
 		<PublicizeAsReferenceAssemblies>$(Platform == 'Release')</PublicizeAsReferenceAssemblies>
-		<!-- Core properties and properties dependent on them are customizable here. -->
-		<OutputPath>build\asm-ly\</OutputPath>
+		<!-- Build-in properties and properties dependent on them are customizable here. -->
+		<OutputPath>$(BaseIntermediateOutputPath)$(Platform)\$(Configuration)\</OutputPath>
 		<!-- Custom properties and properties dependent on them are customizable here. -->
 		<C_UtilsDir Label="Where the auxillary PowerShell Core (v7.1.3+) scripts are">$(MSBuildProjectDirectory)\..\</C_UtilsDir>
 		<C_TargetGameVer Label="The RimWorld version to build the mod for">$(Platform)</C_TargetGameVer>
 		<C_RimWorldVersion Label="The same as the above, but w/o the leading letter prefix">$(C_TargetGameVer.Substring(1))</C_RimWorldVersion>
-		<C_BuildAssemblyName Label="The name of the assembly-related artifacts">$(AssemblyName)-$(C_TargetGameVer)-$(Configuration)</C_BuildAssemblyName>
 		<DefineConstants Label="Cond. symbol for the used RW version like `RW_VER_1_3`">$(DefineConstants);RW_VER_$(C_RimWorldVersion.Replace('.', '_'))</DefineConstants>
 		<C_SourceContentDir Label="Path to misc. source content used in builds">$(MSBuildProjectDirectory)\..\Content\</C_SourceContentDir>
 		<C_ModRootDir Label="The location of the mod">$(SolutionDir.TrimEnd('\'))</C_ModRootDir>
@@ -91,9 +90,6 @@
 			Specifies target game versions. Unsupported values can be removed from this list.
 		-->
 		<Platforms>v1.x;v1.0;v1.1;v1.2;v1.3</Platforms>
-		<!-- Internal properties. -->
-		<C_AssemblyName>$(AssemblyName)</C_AssemblyName>
-		<AssemblyName>$(C_BuildAssemblyName)</AssemblyName>
 	</PropertyGroup>
 	<!-- Target game version-specific adjustments. -->
 	<Choose>
@@ -131,45 +127,38 @@
 		<PackageReference Include="Krafs.Rimworld.Ref" Version="$(C_RimWorldVersion).*" />
 		<PackageReference Include="Lib.Harmony" Version="2.1.1" ExcludeAssets="runtime" />
 		<Publicize Include="Assembly-CSharp;UnityEngine.CoreModule" />
-		<Reference Include="Framework" Condition="'$(C_AssemblyName)' != 'Framework'">
+		<Reference Include="Framework" Condition="'$(AssemblyName)' != 'Framework'">
 			<HintPath>$(C_ModRootDir)\..\ZzZomboRW$(C_AssemblyCopyPath)Framework.dll</HintPath>
 			<!-- Try to link with a build from the matching configuration. -->
 			<HintPath Condition="Exists('$(C_ModRootDir)\..\ZzZomboRW$(C_AssemblyCopyPath)Framework$(VersionSuffix).dll')">$(C_ModRootDir)\..\ZzZomboRW$(C_AssemblyCopyPath)Framework$(VersionSuffix).dll</HintPath>
 			<Private>false</Private>
 		</Reference>
 	</ItemGroup>
-	<ItemGroup Label="Internal items and targets, for the build process start here">
+	<ItemGroup Label="Internal items and targets, for the build process">
 		<LoadFolders Include="$(C_SourceContentDir)loadFolders.xml" />
-		<FilesToDelete Include="@(LoadFolders->'$(C_ModRootDir)\%(Filename)%(Extension)')" />
-		<CopyBinaries Include="$(OutputPath)$(C_BuildAssemblyName).*" />
+		<CopyBinaries Include="$(OutputPath)$(AssemblyName).dll" />
+		<CopyBinaries Include="$(OutputPath)$(AssemblyName).pdb" Condition="'$(Configuration)' != 'Release'" />
 	</ItemGroup>
 	<ItemGroup Condition="'$(C_TargetGameVer)' == 'v1.0'" Label="Files to clean up before build, for v1.0">
 		<!-- Remove stale binaries from other configurations. -->
-		<FilesToDelete Include="$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_AssemblyName).*" Condition="$(Configuration) != Release" />
-		<FilesToDelete Include="$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_AssemblyName)$(VersionSuffix).*" Condition="$(Configuration) == Release" />
+		<PreBuildCleanupFiles Include="$(C_ModRootDir)$(C_AssemblyCopyPath)$(AssemblyName).*" Condition="$(Configuration) != Release" />
+		<PreBuildCleanupFiles Include="$(C_ModRootDir)$(C_AssemblyCopyPath)$(AssemblyName)$(VersionSuffix).*" Condition="$(Configuration) == Release" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\ZzZomboRW\Source\Code\Framework.csproj" />
 	</ItemGroup>
 	<!-- Remove stale binaries from other configurations. Not needed for v1.x, as `loadFolders.xml` takes care of using the correct binaries. -->
 	<!--<ItemGroup Condition="'$(Platform)' != 'v1.0'" Label="Files to clean up before build, for v1.x">
-		<FilesToDelete Include="$(C_ModRootDir)$(C_ContentDir_v1x)$(VersionSuffix)\Assemblies\$(C_AssemblyName).*" Condition="$(Configuration) != Release" />
-		<FilesToDelete Include="$(C_ModRootDir)$(C_ContentDir_v1x)\Assemblies\$(C_AssemblyName).*" Condition="$(Configuration) == Release" />
+		<PreBuildCleanupFiles Include="$(C_ModRootDir)$(C_ContentDir_v1x)$(VersionSuffix)\Assemblies\$(AssemblyName).*" Condition="$(Configuration) != Release" />
+		<PreBuildCleanupFiles Include="$(C_ModRootDir)$(C_ContentDir_v1x)\Assemblies\$(AssemblyName).*" Condition="$(Configuration) == Release" />
 	</ItemGroup>-->
-	<Target Name="PreBuildFileCleanup" Condition="'@(FilesToDelete)' != ''">
-		<Message Text="Pre-build cleanup for RW $(C_TargetGameVer), configuration &quot;$(Configuration)&quot;: @(FilesToDelete)…" Importance="high" />
-		<Delete Files="@(FilesToDelete)" />
+	<Target Name="PreBuildFileCleanup" Condition="'@(PreBuildCleanupFiles)' != ''">
+		<Message Text="Pre-build cleanup for RW $(C_TargetGameVer), configuration &quot;$(Configuration)&quot;: @(PreBuildCleanupFiles)…" Importance="high" />
+		<Delete Files="@(PreBuildCleanupFiles)" />
 		<Message Text="Cleanup done." Importance="high" />
 	</Target>
-	<!--<Target Name="PostBuildStep_GetBinaries" BeforeTargets="AfterBuild">
-		<ItemGroup>
-			<CopyBinaries Include="$(OutputPath)$(C_BuildAssemblyName).*" />
-		</ItemGroup>
-	</Target>-->
-	<Target Name="PostBuildStep_CopyBinaries" AfterTargets="PostBuildStep_GetBinaries" DependsOnTargets="" Inputs="@(CopyBinaries)"
-			Outputs="@(CopyBinaries->'$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_CopyAssemblyName)%(Extension)')">
-		<Message Text="Copying binaries: @(CopyBinaries) to @(CopyBinaries->'$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_CopyAssemblyName)%(Extension)')…"
-			Importance="high" />
+	<Target Name="PostBuildStep_CopyBinaries" BeforeTargets="AfterBuild" Inputs="@(CopyBinaries)" Outputs="@(CopyBinaries->'$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_CopyAssemblyName)%(Extension)')">
+		<Message Text="Copying binaries: @(CopyBinaries) to @(CopyBinaries->'$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_CopyAssemblyName)%(Extension)')…" Importance="high" />
 		<Copy DestinationFiles="@(CopyBinaries->'$(C_ModRootDir)$(C_AssemblyCopyPath)$(C_CopyAssemblyName)%(Extension)')" SourceFiles="@(CopyBinaries)" />
 	</Target>
 	<Target Name="ProjectCleanup">
@@ -187,28 +176,35 @@
 		<!--<Message Text="Property fixup clean up for RW $(C_TargetGameVer), configuration &quot;$(Configuration)&quot;…" Importance="high" />
 		<Message Text="Fixup done." Importance="high" />-->
 	</Target>
-	<Target Name="LoadFoldersFixup" Inputs="@(LoadFolders)" Outputs="@(LoadFolders->'$(C_ModRootDir)\%(Filename)%(Extension)')">
+	<Target Name="LoadFoldersFixup">
 		<PropertyGroup>
 			<FixupConfiguration Condition="$(FixupConfiguration) == ''">$(Configuration)</FixupConfiguration>
 			<!-- Commented out until https://github.com/MicrosoftDocs/visualstudio-docs/issues/7066 is resolved. -->
 			<!--<FixupTimestamp>$([System.DateTime]::Now)</FixupTimestamp>-->
 		</PropertyGroup>
-		<Exec Command="pwsh -nop -File &quot;$(C_UtilsDir)loadFolderFixup.ps1&quot; -configuration &quot;$(FixupConfiguration)&quot; -in &quot;@(LoadFolders)&quot; -out &quot;$(C_ModRootDir)\%(Filename)%(Extension)&quot;"
-			WorkingDirectory="$(C_UtilsDir)" />
+		<Exec Command="pwsh -nop -File &quot;$(C_UtilsDir)loadFolderFixup.ps1&quot; -conf &quot;$(FixupConfiguration)&quot; -in &quot;@(LoadFolders)&quot; -out &quot;$(C_ModRootDir)\%(Filename)%(Extension)&quot;" WorkingDirectory="$(C_UtilsDir)" />
 		<!--<Touch Files="@(LoadFolders);$(C_ModRootDir)\%(Filename)%(Extension)" Time="$(FixupTimestamp)"/>-->
 	</Target>
 	<Target Name="PrepareRelease">
 		<Message Importance="high" Text="Preparing a new release…" />
-		<Exec Command="pwsh -nop -File &quot;$(C_UtilsDir)prepareRelease.ps1&quot; -version &quot;$(C_TargetGameVer)&quot; -outputPath &quot;$(C_ModRootDir)$(C_ContentDir)&quot;"
-			WorkingDirectory="$(C_UtilsDir)" />
+		<Exec Command="pwsh -nop -File &quot;$(C_UtilsDir)prepareRelease.ps1&quot; -version &quot;$(C_TargetGameVer)&quot; -outputPath &quot;$(C_ModRootDir)$(C_ContentDir)&quot;" WorkingDirectory="$(C_UtilsDir)" />
 		<Message Text="Operation done." Importance="high" />
 	</Target>
 	<Target Name="MakeRelease">
 
 	</Target>
+	<Target Name="SetIsRebuild">
+		<PropertyGroup>
+			<C_IsRebuild>true</C_IsRebuild>
+		</PropertyGroup>
+	</Target>
+	<Target Name="MakeArchive" DependsOnTargets="loadFoldersFixup">
+		<Exec Command="pwsh -nop -File &quot;$(C_UtilsDir)makeArchive.ps1&quot; -versions &quot;$(Platforms)&quot; -conf &quot;$(Configuration)&quot; -path &quot;build\$(AssemblyName)$(VersionSuffix)-$([System.DateTime]::Now.ToString(dd-MM-yyyy_hh-mm))&quot; -root &quot;$(C_ModRootDir)&quot;" />
+	</Target>
 	<Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
 	<PropertyGroup Label="Build target ordering">
 		<BuildDependsOn>PreBuildFileCleanup;$(BuildDependsOn);LoadFoldersFixup</BuildDependsOn>
 		<CleanDependsOn>$(CleanDependsOn);ProjectCleanup</CleanDependsOn>
+		<RebuildDependsOn>SetIsRebuild;$(RebuildDependsOn)</RebuildDependsOn>
 	</PropertyGroup>
 </Project>

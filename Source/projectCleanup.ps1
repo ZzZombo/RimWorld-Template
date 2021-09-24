@@ -1,4 +1,4 @@
-param([string]$versions, [switch]$debug = $false)
+param([string]$versions, [switch]$Verbose = $false)
 
 Push-Location
 Set-Location ..
@@ -8,7 +8,7 @@ try {
 
 	Get-ChildItem -Directory | ForEach-Object {
 		$f = $_ | Get-ChildItem -Recurse | Where-Object -Property Length -GT 0 | Select-Object -First 1 -Property FullName
-		if($debug) {
+		if($Verbose) {
 			$fn = $f ? (Resolve-Path -Path $f.FullName -Relative) : '<none>'
 			"$($_.Fullname): $fn" | Write-Output
 		}
@@ -22,7 +22,7 @@ try {
 		}
 	}
 
-	'Source\Content\Changelog\Images' | New-Item -ItemType Directory -ErrorAction SilentlyContinue
+	'Source\Content\Changelog\Images' | New-Item -ItemType Directory -ErrorAction Ignore
 }
 catch {
 	throw $_
