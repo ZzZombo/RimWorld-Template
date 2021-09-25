@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- First version introduction. -->
+<HugsLib.UpdateFeatureDef>
+	<assemblyVersion>1.0.0</assemblyVersion>
+	<targetAudience>NewPlayers</targetAudience>
+	<content>
+		<![CDATA[]]>
+	</content>
+</HugsLib.UpdateFeatureDef>

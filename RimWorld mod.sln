@@ -3,20 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code", "Source\Code.csproj", "{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code", "Source\Code\Code.csproj", "{D7D21B4A-1DA7-41D8-B202-C58CA8FA62AA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B} = {70EC57B9-D44F-42B1-9AB6-7AF296AB435B}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\ZzZomboRW\Source\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\ZzZomboRW\Source\Code\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "Source\Content.shproj", "{2B8050E3-2030-4648-91DA-6101FEB69C3B}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "Source\Content\Content.shproj", "{54C2D06A-5DE3-4F8C-AB74-FBB8C38A2E4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.3", "I:\dev\RimWorld\RW\source-v1.3\Decompiled RW v1.3.csproj", "{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Source\Content\Content.projitems*{54c2d06a-5de3-4f8c-ab74-fbb8c38a2e4b}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|v1.0 = Debug|v1.0
 		Debug|v1.1 = Debug|v1.1
