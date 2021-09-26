@@ -8,7 +8,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code", "Code\Code.csproj", 
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B} = {70EC57B9-D44F-42B1-9AB6-7AF296AB435B}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\..\ZzZomboRW\Source\Code\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\..\ZzZomboRW-Framework\Source\Code\Framework.csproj", "{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "Content\Content.shproj", "{54C2D06A-5DE3-4F8C-AB74-FBB8C38A2E4B}"
 EndProject
