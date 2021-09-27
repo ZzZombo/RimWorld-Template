@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using Verse;
 using ZzZomboRW.Framework;
@@ -9,8 +10,8 @@ namespace ZzZomboRW.Template //*FIXME*
 	internal static class MOD
 	{
 		public const string NAME = "*FIXME*";
-		public static readonly string FullID = typeof(Mod).Namespace;
-		public static readonly string ID = $"{FullID.Split(".".ToCharArray(), 1)[1]}";
+		public static readonly string FullID = typeof(MOD).Namespace;
+		public static readonly string ID = FullID.Split(new[] { '.' }, 2).Last();
 		public static readonly string IDNoDots = ID.Replace('.', '_');
 	}
 
@@ -19,7 +20,7 @@ namespace ZzZomboRW.Template //*FIXME*
 	{
 		public static Mod Instance;
 		public readonly Harmony harmony;
-		private readonly ModSettings settings;
+		internal readonly ModSettings settings;
 		public static readonly List<Framework.PatchInfo> immediatePatches = new()
 		{
 		};
