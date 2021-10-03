@@ -9,17 +9,18 @@ namespace ZzZomboRW.Template //*FIXME*
 	[HotSwappable]
 	internal static class MOD
 	{
-		public const string NAME = "*FIXME*";
-		public static readonly string FullID = typeof(MOD).Namespace;
-		public static readonly string ID = FullID.Split(new[] { '.' }, 2).Last();
+		public static readonly string NAME = Utils.GetCallingModName(0);
+		public static readonly string ID = typeof(MOD).Namespace;
 		public static readonly string IDNoDots = ID.Replace('.', '_');
+		public static readonly string IDNoRoot = ID.Split(new[] { '.' }, 2).Last();
+		public static readonly string IDNoRootNoDots = IDNoRoot.Replace('.', '_');
 	}
 
 	[HotSwappable]
 	internal class Mod: Verse.Mod
 	{
 		public static Mod Instance;
-		public readonly Harmony harmony;
+		public static readonly Harmony Harmony = new(MOD.ID);
 		internal readonly ModSettings settings;
 		public static readonly List<Framework.PatchInfo> immediatePatches = new()
 		{
@@ -27,9 +28,8 @@ namespace ZzZomboRW.Template //*FIXME*
 		public Mod(ModContentPack content) : base(content)
 		{
 			Instance ??= this;
-			this.harmony = new Harmony(MOD.FullID);
 			this.settings = this.GetSettings<ModSettings>();
-			FrameworkMod.ApplyPatches(this.harmony, immediatePatches);
+			FrameworkMod.ApplyPatches(immediatePatches);
 		}
 #if MOD_SHOW_SETTINGS
 		public override void DoSettingsWindowContents(UnityEngine.Rect rect)
@@ -42,7 +42,7 @@ namespace ZzZomboRW.Template //*FIXME*
 		}
 		public override string SettingsCategory()
 		{
-			return MOD.FullID.TryTranslate(out var r) ? r : MOD.NAME;
+			return MOD.ID.TryTranslate(out var r) ? r : MOD.NAME;
 		}
 #endif
 	}

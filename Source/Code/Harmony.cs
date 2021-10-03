@@ -14,8 +14,8 @@ namespace ZzZomboRW.Template //*FIXME*
 		};
 		static StartupHarmonyHelper()
 		{
-			FrameworkMod.ApplyPatches(Mod.Instance.harmony, delayedPatches);
-			Mod.Instance.harmony.PatchAll(Assembly.GetExecutingAssembly());
+			FrameworkMod.ApplyPatches(delayedPatches);
+			Mod.Harmony.PatchAll(Assembly.GetExecutingAssembly());
 		}
 	}
 }

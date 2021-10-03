@@ -12,10 +12,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework", "..\..\ZzZomboR
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "Content\Content.shproj", "{54C2D06A-5DE3-4F8C-AB74-FBB8C38A2E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.2", "I:\dev\RimWorld\RW\source-v1.2\Decompiled RW v1.2.csproj", "{CA27B971-6104-453D-A09F-1C5767BFEC13}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decompiled RW v1.3", "I:\dev\RimWorld\RW\source-v1.3\Decompiled RW v1.3.csproj", "{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Content\Content.projitems*{54c2d06a-5de3-4f8c-ab74-fbb8c38a2e4b}*SharedItemsImports = 13
@@ -61,26 +57,6 @@ Global
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|v1.3.Build.0 = Release|v1.3
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|v1.x.ActiveCfg = Release|v1.x
 		{70EC57B9-D44F-42B1-9AB6-7AF296AB435B}.Release|v1.x.Build.0 = Release|v1.x
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Debug|v1.0.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Debug|v1.1.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Debug|v1.2.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Debug|v1.3.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Debug|v1.x.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|v1.0.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|v1.1.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|v1.2.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|v1.3.ActiveCfg = Ignore|Any CPU
-		{CA27B971-6104-453D-A09F-1C5767BFEC13}.Release|v1.x.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Debug|v1.0.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Debug|v1.1.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Debug|v1.2.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Debug|v1.3.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Debug|v1.x.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Release|v1.0.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Release|v1.1.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Release|v1.2.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Release|v1.3.ActiveCfg = Ignore|Any CPU
-		{C0B8C128-8D60-4D73-859C-D6BCC7748D3F}.Release|v1.x.ActiveCfg = Ignore|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
